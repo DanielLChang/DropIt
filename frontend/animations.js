@@ -4,18 +4,15 @@ import Howler from './howler';
 const Animations = (ctx, canvas) => {
 
   //Set default state;
-  let canvasWidth = window.innerWidth;
-  let canvasHeight = window.innerHeight;
   let numOfCircles = 20;
-  let distance = 100;
+  let distance = 150;
   let actions = [];
 
   let colorSets = [
-    ["#84dccf", "#a6d9f7", "#bccce0", "#bf98a0"],
-    ["#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"],
-    ["#5B618A", "#9EADC8", "#B9E28C", "#D6D84F"],
-    ["#daffef", "#d0ffd6", "#d5e2bc", "#d3c0d2"],
-    ["#f6e8ea", "#ef626c", "#acbed8", "#84dccf"]
+    ["#f8ffe5", "#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"],
+    ["#5b507a", "#5B618A", "#9EADC8", "#B9E28C", "#D6D84F"],
+    ["#f6e8ea", "#ef626c", "#de1a1a", "#acbed8", "#84dccf"],
+    ["#c03221", "#f7f7ff", "#f2d0a4", "#545e75", "#3f826d"]
   ];
 
   let fontSize = () => {
@@ -23,8 +20,8 @@ const Animations = (ctx, canvas) => {
   };
 
   const resizeCanvas = () => {
-    canvasWidth = window.innerWidth;
-    canvasHeight = window.innerHeight;
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
   };
 
   const removeAction = (action) => {
@@ -69,7 +66,7 @@ const Animations = (ctx, canvas) => {
     circle.x = x;
     circle.y = y;
     circle.color = colorSet[anime.random(0, colorSet.length - 1)];
-    circle.radius = anime.random(fontSize(), fontSize() * 2 / 3);
+    circle.radius = anime.random(fontSize(), fontSize() * 2);
 
     circle.draw = function() {
       ctx.beginPath();
@@ -120,7 +117,7 @@ const Animations = (ctx, canvas) => {
     let ripple1Animation = anime({
       targets: ripple1,
       radius: () => {
-        return anime.random(fontSize(), fontSize() * 3);
+        return anime.random(fontSize() * 3, fontSize() * 5);
       },
       lineWidth: 0,
       alpha: {
@@ -141,7 +138,7 @@ const Animations = (ctx, canvas) => {
     let ripple2Animation = anime({
       targets: ripple2,
       radius: () => {
-        return anime.random(fontSize() * 3, fontSize() * 5);
+        return anime.random(fontSize() * 5, fontSize() * 7);
       },
       lineWidth: 0,
       alpha: {
@@ -162,7 +159,7 @@ const Animations = (ctx, canvas) => {
     let ripple3Animation = anime({
       targets: ripple3,
       radius: () => {
-        return anime.random(fontSize() * 5, fontSize() * 7);
+        return anime.random(fontSize() * 7, fontSize() * 9);
       },
       lineWidth: 0,
       alpha: {
@@ -188,7 +185,7 @@ const Animations = (ctx, canvas) => {
   const animate = anime({
     duration: Infinity,
     update: () => {
-      ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
       actions.forEach((action) => {
         action.animatables.forEach((animatable) => {
           animatable.target.draw();
@@ -201,8 +198,8 @@ const Animations = (ctx, canvas) => {
   let x, y;
 
   const updateCoords = () => {
-    x = Math.random() * (canvasWidth);
-    y = Math.random() * (canvasHeight);
+    x = Math.random() * (canvas.width);
+    y = Math.random() * (canvas.height);
   };
 
   document.addEventListener('keydown', (e, fake) => {
@@ -221,7 +218,7 @@ const Animations = (ctx, canvas) => {
 
   });
 
-  window.addEventListener('resize', resizeCanvas, false);
+  window.addEventListener('resize', resizeCanvas);
 
   return {
     boom: animate
