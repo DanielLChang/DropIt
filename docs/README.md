@@ -16,9 +16,9 @@ This project will also include:
 ## Wireframe
 This app consists of a single screen with instructions, control for a background song, and animations. Links to my github and linkedin will also be available on the bottom of the page. Game controls will include starting/stopping the background song.
 
-![dropit](./docs/wireframe/dropit.png)
+![dropit](./wireframe/dropit.png)
 
-![modal](./docs/wireframe/modal.png)
+![modal](./wireframe/modal.png)
 
 ## Architecture and Technologies
 This project will be implemented with the following technologies:
