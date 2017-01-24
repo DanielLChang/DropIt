@@ -7,7 +7,7 @@ const Animations = (ctx, canvas) => {
   let canvasWidth = window.innerWidth;
   let canvasHeight = window.innerHeight;
   let numOfCircles = 20;
-  let distance = 200;
+  let distance = 100;
   let actions = [];
 
   let colorSets = [
@@ -32,9 +32,14 @@ const Animations = (ctx, canvas) => {
     if (idx > -1) actions.splice(idx, 1);
   };
 
+  const changeColorSet = () => {
+    let temp = colorSets.shift();
+    colorSets.push(temp);
+  };
+
   const drawRipple = (x, y) => {
     //Choose a random colorset
-    let colorSet = colorSets[anime.random(0, colorSets.length - 1)];
+    let colorSet = colorSets[0];
     let ripple = {};
 
     ripple.x = x;
@@ -59,12 +64,12 @@ const Animations = (ctx, canvas) => {
 
   const drawCircle = (x, y) => {
     //Choose a random colorset
-    let colorSet = colorSets[anime.random(0, colorSets.length - 1)];
+    let colorSet = colorSets[0];
     let circle = {};
     circle.x = x;
     circle.y = y;
     circle.color = colorSet[anime.random(0, colorSet.length - 1)];
-    circle.radius = anime.random(fontSize(), fontSize() * 2);
+    circle.radius = anime.random(fontSize(), fontSize() * 2 / 3);
 
     circle.draw = function() {
       ctx.beginPath();
@@ -115,7 +120,7 @@ const Animations = (ctx, canvas) => {
     let ripple1Animation = anime({
       targets: ripple1,
       radius: () => {
-        return anime.random(fontSize() * 3, fontSize() * 5);
+        return anime.random(fontSize(), fontSize() * 3);
       },
       lineWidth: 0,
       alpha: {
@@ -136,7 +141,7 @@ const Animations = (ctx, canvas) => {
     let ripple2Animation = anime({
       targets: ripple2,
       radius: () => {
-        return anime.random(fontSize() * 5, fontSize() * 7);
+        return anime.random(fontSize() * 3, fontSize() * 5);
       },
       lineWidth: 0,
       alpha: {
@@ -157,7 +162,7 @@ const Animations = (ctx, canvas) => {
     let ripple3Animation = anime({
       targets: ripple3,
       radius: () => {
-        return anime.random(fontSize() * 7, fontSize() * 9);
+        return anime.random(fontSize() * 5, fontSize() * 7);
       },
       lineWidth: 0,
       alpha: {
@@ -203,6 +208,12 @@ const Animations = (ctx, canvas) => {
   document.addEventListener('keydown', (e, fake) => {
     e.preventDefault();
 
+    //Spacebar to play/pause song
+    if (e.keyCode === 32) {
+      changeColorSet();
+    }
+
+    //Number and letter key to play sound
     if (e.keyCode >= 48 && e.keyCode <= 90) {
       updateCoords();
       animateCircles(x, y);
