@@ -4,7 +4,8 @@ import Howler from './howler';
 const Animations = (ctx, canvas) => {
 
   //Set default state;
-  let canvasWidth, canvasHeight;
+  let canvasWidth = window.innerWidth;
+  let canvasHeight = window.innerHeight;
   let numOfCircles = 20;
   let distance = 200;
   let actions = [];
@@ -44,7 +45,7 @@ const Animations = (ctx, canvas) => {
     ripple.lineWidth = 5;
 
     ripple.draw = function() {
-      ctx.globalAlpha = 1;
+      ctx.globalAlpha = ripple.alpha;
       ctx.beginPath();
       ctx.arc(ripple.x, ripple.y, ripple.radius, 2 * Math.PI, false);
       ctx.lineWidth = ripple.lineWidth;
@@ -96,11 +97,11 @@ const Animations = (ctx, canvas) => {
     //Animate shapes
     let circleAnimation = anime({
       targets: circles,
-      x: (ripple) => {
-        return ripple.x + anime.random(-distance, distance);
+      x: (circle) => {
+        return circle.x + anime.random(-distance, distance);
       },
-      y: (ripple) => {
-        return ripple.y + anime.random(-distance, distance);
+      y: (circle) => {
+        return circle.y + anime.random(-distance, distance);
       },
       radius: 0,
       duration: () => {
@@ -114,7 +115,7 @@ const Animations = (ctx, canvas) => {
     let ripple1Animation = anime({
       targets: ripple1,
       radius: () => {
-        return anime.random(fontSize() * 5, fontSize() * 7);
+        return anime.random(fontSize() * 3, fontSize() * 5);
       },
       lineWidth: 0,
       alpha: {
@@ -135,7 +136,7 @@ const Animations = (ctx, canvas) => {
     let ripple2Animation = anime({
       targets: ripple2,
       radius: () => {
-        return anime.random(fontSize() * 7, fontSize() * 9);
+        return anime.random(fontSize() * 5, fontSize() * 7);
       },
       lineWidth: 0,
       alpha: {
@@ -156,7 +157,7 @@ const Animations = (ctx, canvas) => {
     let ripple3Animation = anime({
       targets: ripple3,
       radius: () => {
-        return anime.random(fontSize() * 9, fontSize() * 11);
+        return anime.random(fontSize() * 7, fontSize() * 9);
       },
       lineWidth: 0,
       alpha: {
@@ -195,13 +196,18 @@ const Animations = (ctx, canvas) => {
   let x, y;
 
   const updateCoords = () => {
-    x = Math.random() * (canvas.width);
-    y = Math.random() * (canvas.height);
+    x = Math.random() * (canvasWidth);
+    y = Math.random() * (canvasHeight);
   };
 
-  document.addEventListener('keydown', (e) => {
-    updateCoords();
-    animateCircles(x, y);
+  document.addEventListener('keydown', (e, fake) => {
+    e.preventDefault();
+
+    if (e.keyCode >= 48 && e.keyCode <= 90) {
+      updateCoords();
+      animateCircles(x, y);
+    }
+
   });
 
   window.addEventListener('resize', resizeCanvas, false);
