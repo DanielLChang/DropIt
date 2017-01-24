@@ -34,3 +34,28 @@ body {
   color: #a6d9f7;
   font-family: 'Rock Salt', cursive;
 }
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
+}
+
+.fa-github {
+  color: #a6d9f7;
+  font-size: 45px;
+  margin-right: 20px;
+}
+.fa-github:hover {
+  color: #59F8E8;
+}
+.fa-linkedin {
+  color: #a6d9f7;
+  font-size: 45px;
+}
+.fa-linkedin:hover {
+  color: #59F8E8;
+}
