@@ -4,7 +4,6 @@ import Howler from './howler';
 const Animations = (ctx, canvas) => {
 
   //Set default state;
-  let typing = false;
   let canvasWidth, canvasHeight;
   let numOfCircles = 20;
   let distance = 200;
@@ -105,7 +104,7 @@ const Animations = (ctx, canvas) => {
       },
       radius: 0,
       duration: () => {
-        return anime.random(1000, 1500);
+        return anime.random(1000, 1300);
       },
       easing: 'easeOutExpo',
       complete: removeAction
@@ -126,7 +125,7 @@ const Animations = (ctx, canvas) => {
         }
       },
       duration: () => {
-        return anime.random(1000, 1500);
+        return anime.random(1000, 1300);
       },
       easing: 'easeOutExpo',
       complete: removeAction
@@ -147,7 +146,7 @@ const Animations = (ctx, canvas) => {
         }
       },
       duration: () => {
-        return anime.random(1000, 1500);
+        return anime.random(1000, 1300);
       },
       easing: 'easeOutExpo',
       complete: removeAction
@@ -168,7 +167,7 @@ const Animations = (ctx, canvas) => {
         }
       },
       duration: () => {
-        return anime.random(1000, 1500);
+        return anime.random(1000, 1300);
       },
       easing: 'easeOutExpo',
       complete: removeAction
@@ -192,8 +191,24 @@ const Animations = (ctx, canvas) => {
     }
   });
 
+  //Update coordinates after animation
+  let x, y;
+
+  const updateCoords = () => {
+    x = Math.random() * (canvas.width);
+    y = Math.random() * (canvas.height);
+  };
+
+  document.addEventListener('keydown', (e) => {
+    updateCoords();
+    animateCircles(x, y);
+  });
+
   window.addEventListener('resize', resizeCanvas, false);
 
+  return {
+    boom: animate
+  };
 
 };
 
