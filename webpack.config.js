@@ -2,7 +2,7 @@ const path = require("path");
 
 module.exports = {
  context: __dirname,
- entry: "./frontend/dropit.jsx",
+ entry: "./frontend/dropit.js",
  output: {
    path: path.join(__dirname),
    filename: "bundle.js"

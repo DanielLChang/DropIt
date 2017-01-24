@@ -1,11 +1,11 @@
 import Animations from './animations';
 
 document.addEventListener("DOMContentLoaded", () => {
-  const root = document.getElementById('root');
-  const ctx = root.getContext('2d');
-  ctx.root.width = window.innerWidth;
-  ctx.root.height = window.innerHeight;
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.canvas.width = window.innerWidth;
+  ctx.canvas.height = window.innerHeight;
 
-  Animations(ctx, root);
+  Animations(ctx, canvas);
 
 });
