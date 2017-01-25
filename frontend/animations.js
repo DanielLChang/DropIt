@@ -1,6 +1,8 @@
 import anime from 'animejs';
 import { soundSet1 } from './sound_set_1';
 import { soundSet2 } from './sound_set_2';
+import { soundSet3 } from './sound_set_3';
+import { soundSet4 } from './sound_set_4';
 import Howler from './howler.min.js';
 
 const Animations = (ctx, canvas) => {
@@ -19,7 +21,9 @@ const Animations = (ctx, canvas) => {
 
   let soundSets = [
     soundSet1,
-    soundSet2
+    soundSet2,
+    soundSet3,
+    soundSet4
   ];
 
   let fontSize = () => {
@@ -217,7 +221,7 @@ const Animations = (ctx, canvas) => {
   document.addEventListener('keydown', (e) => {
     e.preventDefault();
 
-    //Spacebar to play/pause song
+    //Spacebar to change colorset and soundset
     if (e.keyCode === 32) {
       changeColorSet();
       changeSoundSet();
