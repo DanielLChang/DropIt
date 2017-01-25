@@ -24,6 +24,13 @@ const Animations = (ctx, canvas) => {
     ["#f6e8ea", "#ef626c", "#de1a1a", "#acbed8", "#84dccf"]
   ];
 
+  let fillSets = [
+    "#312f2f",
+    "#181819",
+    "#0b111c",
+    "#010e23"
+  ];
+
   let soundSets = [
     soundSet1,
     soundSet2,
@@ -247,7 +254,7 @@ const Animations = (ctx, canvas) => {
   });
 
   window.addEventListener('resize', resizeCanvas);
-  
+
 };
 
 export default Animations;

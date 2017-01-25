@@ -64,6 +64,20 @@
 	
 	  (0, _start2.default)(ctx, canvas);
 	  (0, _animations2.default)(ctx, canvas);
+	
+	  var modal = document.getElementById('myModal');
+	
+	  document.addEventListener('keydown', function (e) {
+	    e.preventDefault();
+	    $('#myModal').addClass('fadeOut');
+	  });
+	
+	  window.onclick = function (e) {
+	    e.preventDefault();
+	    if (e.target === modal) {
+	      $('#myModal').addClass('fadeOut');
+	    }
+	  };
 	});
 
 /***/ },
@@ -111,6 +125,8 @@
 	  ["#5bc0eb", "#f9c80e", "#41ead4", "#fdfffc", "#b91372"],
 	  //colorset4
 	  ["#f6e8ea", "#ef626c", "#de1a1a", "#acbed8", "#84dccf"]];
+	
+	  var fillSets = ["#312f2f", "#181819", "#0b111c", "#010e23"];
 	
 	  var soundSets = [_sound_set_.soundSet1, _sound_set_2.soundSet2, _sound_set_3.soundSet3, _sound_set_4.soundSet4];
 	
@@ -1791,8 +1807,15 @@
 	    setTimeout(removeLogo, 300);
 	  };
 	
-	  setTimeout(pulseContainer, 800);
-	  setTimeout(pulseLogo, 1000);
+	  var showModal = function showModal() {
+	    var modal = document.getElementById('myModal');
+	    modal.style.display = 'block';
+	    $('#myModal').addClass('fadeIn');
+	  };
+	
+	  setTimeout(pulseContainer, 500);
+	  setTimeout(pulseLogo, 800);
+	  setTimeout(showModal, 1000);
 	};
 	
 	exports.default = Start;

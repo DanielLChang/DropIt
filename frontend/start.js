@@ -180,8 +180,15 @@ const Start = (ctx, canvas) => {
       , 300);
   };
 
-  setTimeout(pulseContainer, 800);
-  setTimeout(pulseLogo, 1000);
+  const showModal = () => {
+    const modal = document.getElementById('myModal');
+    modal.style.display = 'block';
+    $('#myModal').addClass('fadeIn');
+  };
+
+  setTimeout(pulseContainer, 500);
+  setTimeout(pulseLogo, 800);
+  setTimeout(showModal, 1000);
 
 };
 

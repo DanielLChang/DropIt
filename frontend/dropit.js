@@ -10,4 +10,18 @@ document.addEventListener("DOMContentLoaded", () => {
   Start(ctx, canvas);
   Animations(ctx, canvas);
 
+  const modal = document.getElementById('myModal');
+
+  document.addEventListener('keydown', (e) => {
+    e.preventDefault();
+    $('#myModal').addClass('fadeOut');
+  });
+
+  window.onclick = (e) => {
+    e.preventDefault();
+    if (e.target === modal)  {
+      $('#myModal').addClass('fadeOut');
+    }
+  };
+
 });
