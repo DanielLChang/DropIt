@@ -1,5 +1,5 @@
 body {
-  background-color: #312f2f;
+  background-color: #38393a;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -27,16 +27,17 @@ body {
 }
 
 .modal-content {
-    background-color: #eff0f2;
+    background-color: #38393a;
     margin: 5% auto;
-    height: 25%;
+    height: 10%;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    width: 70%;
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    border-radius: 5px;
 }
 
 #title-container {
@@ -47,19 +48,26 @@ body {
   align-items: center;
   top: 45%;
 }
+
 #title {
-  display: flex;
   font-size: 40px;
   color: #84dccf;
   font-family: 'Rock Salt', cursive;
   margin-bottom: 15px;
 }
+
 #description {
-  display: flex;
   font-size: 20px;
   color: #a6d9f7;
   font-family: 'Rock Salt', cursive;
-  margin-bottom: 25%;
+  margin-bottom: 25px;
+}
+
+#instructions {
+  font-size: 15px;
+  color: #bccce0;
+  font-family: 'Rock Salt', cursive;
+  margin-bottom: 15px;
 }
 
 #logo {
