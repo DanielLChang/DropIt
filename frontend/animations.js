@@ -242,7 +242,6 @@ const Animations = (ctx, canvas) => {
     if (e.keyCode >= 65 && e.keyCode <= 90) {
       updateCoords();
       animateCircles(x, y);
-
       pulseContainer();
 
       sound = new Howl({
