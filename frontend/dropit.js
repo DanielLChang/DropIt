@@ -1,3 +1,4 @@
+require('newrelic');
 import Animations from './animations';
 import Start from './start';
 
