@@ -203,7 +203,7 @@ const Animations = (ctx, canvas) => {
     y = Math.random() * (canvas.height);
   };
 
-  document.addEventListener('keydown', (e, fake) => {
+  document.addEventListener('keydown', (e) => {
     e.preventDefault();
 
     //Spacebar to play/pause song
