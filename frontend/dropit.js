@@ -15,12 +15,17 @@ document.addEventListener("DOMContentLoaded", () => {
   document.addEventListener('keydown', (e) => {
     e.preventDefault();
     $('#myModal').addClass('fadeOut');
+
+    const footer = document.getElementById('footer');
+    footer.style.zIndex = '1';
   });
 
   window.onclick = (e) => {
     e.preventDefault();
     if (e.target === modal)  {
       $('#myModal').addClass('fadeOut');
+      const footer = document.getElementById('footer');
+      footer.style.zIndex = '1';
     }
   };
 

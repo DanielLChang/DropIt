@@ -70,12 +70,17 @@
 	  document.addEventListener('keydown', function (e) {
 	    e.preventDefault();
 	    $('#myModal').addClass('fadeOut');
+	
+	    var footer = document.getElementById('footer');
+	    footer.style.zIndex = '1';
 	  });
 	
 	  window.onclick = function (e) {
 	    e.preventDefault();
 	    if (e.target === modal) {
 	      $('#myModal').addClass('fadeOut');
+	      var footer = document.getElementById('footer');
+	      footer.style.zIndex = '1';
 	    }
 	  };
 	});
