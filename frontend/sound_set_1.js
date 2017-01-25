@@ -1,4 +1,4 @@
-export const Sounds = {
+export const soundSet1 = {
   65: ['https://res.cloudinary.com/dxfu1kzhk/video/upload/v1485304441/1_xctwu8.mp3'],
   66: ['https://res.cloudinary.com/dxfu1kzhk/video/upload/v1485304445/2_ew0ciq.mp3'],
   67: ['https://res.cloudinary.com/dxfu1kzhk/video/upload/v1485304447/3_fvupmh.mp3'],

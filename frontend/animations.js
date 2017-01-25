@@ -1,5 +1,6 @@
 import anime from 'animejs';
-import { Sounds } from './sounds';
+import { soundSet1 } from './sound_set_1';
+import { soundSet2 } from './sound_set_2';
 import Howler from './howler.min.js';
 
 const Animations = (ctx, canvas) => {
@@ -14,6 +15,11 @@ const Animations = (ctx, canvas) => {
     ["#5b507a", "#5B618A", "#9EADC8", "#B9E28C", "#D6D84F"],
     ["#5bc0eb", "#f9c80e", "#41ead4", "#fdfffc", "#b91372"],
     ["#f6e8ea", "#ef626c", "#de1a1a", "#acbed8", "#84dccf"]
+  ];
+
+  let soundSets = [
+    soundSet1,
+    soundSet2
   ];
 
   let fontSize = () => {
@@ -33,6 +39,11 @@ const Animations = (ctx, canvas) => {
   const changeColorSet = () => {
     let temp = colorSets.shift();
     colorSets.push(temp);
+  };
+
+  const changeSoundSet = () => {
+    let temp = soundSets.shift();
+    soundSets.push(temp);
   };
 
   const drawRipple = (x, y) => {
@@ -209,6 +220,7 @@ const Animations = (ctx, canvas) => {
     //Spacebar to play/pause song
     if (e.keyCode === 32) {
       changeColorSet();
+      changeSoundSet();
     }
 
     //Number and letter key to play sound
@@ -217,7 +229,7 @@ const Animations = (ctx, canvas) => {
       animateCircles(x, y);
 
       var sound = new Howl({
-        src: Sounds[e.keyCode]
+        src: soundSets[0][e.keyCode]
       });
       sound.play();
     }
