@@ -13,7 +13,7 @@ body {
   height: 100%;
 }
 
-.title-container {
+#title-container {
   position: fixed;
   display: flex;
   flex-direction: column;
@@ -21,18 +21,23 @@ body {
   align-items: center;
   top: 45%;
 }
-.title {
+#title {
   display: flex;
   font-size: 40px;
   color: #84dccf;
   font-family: 'Rock Salt', cursive;
   margin-bottom: 15px;
 }
-.description {
+#description {
   display: flex;
   font-size: 20px;
   color: #a6d9f7;
   font-family: 'Rock Salt', cursive;
+  margin-bottom: 25%;
+}
+
+#logo {
+  height: 50px;
 }
 
 .footer {

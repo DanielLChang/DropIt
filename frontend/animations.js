@@ -1,21 +1,26 @@
 import anime from 'animejs';
-import { soundSet1 } from './sound_set_1';
-import { soundSet2 } from './sound_set_2';
-import { soundSet3 } from './sound_set_3';
-import { soundSet4 } from './sound_set_4';
+import { soundSet1 } from './sounds/sound_set_1';
+import { soundSet2 } from './sounds/sound_set_2';
+import { soundSet3 } from './sounds/sound_set_3';
+import { soundSet4 } from './sounds/sound_set_4';
 import Howler from './howler.min.js';
 
 const Animations = (ctx, canvas) => {
 
   //Set default state;
-  let numOfCircles = 20;
-  let distance = 150;
+  let numOfCircles = 25;
+  let distance = 300;
   let actions = [];
+  let sound;
 
   let colorSets = [
+    //colorset1
     ["#f8ffe5", "#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"],
+    //colorset2
     ["#5b507a", "#5B618A", "#9EADC8", "#B9E28C", "#D6D84F"],
+    //colorset3
     ["#5bc0eb", "#f9c80e", "#41ead4", "#fdfffc", "#b91372"],
+    //colorset4
     ["#f6e8ea", "#ef626c", "#de1a1a", "#acbed8", "#84dccf"]
   ];
 
@@ -103,6 +108,28 @@ const Animations = (ctx, canvas) => {
     return circles;
   };
 
+  const animateRipple = (ripple, size) => {
+    return anime({
+      targets: ripple,
+      radius: () => {
+        return anime.random(fontSize() * size, fontSize() * (size + 2));
+      },
+      lineWidth: 0,
+      alpha: {
+        value: 0,
+        easing: 'linear',
+        duration: () => {
+          return anime.random(300, 500);
+        }
+      },
+      duration: () => {
+        return anime.random(1000, 1300);
+      },
+      easing: 'easeOutExpo',
+      complete: removeAction
+    });
+  };
+
   const animateCircles = (x, y) => {
     resizeCanvas();
 
@@ -129,68 +156,10 @@ const Animations = (ctx, canvas) => {
       complete: removeAction
     });
 
-    //Animate ripple 1
-    let ripple1Animation = anime({
-      targets: ripple1,
-      radius: () => {
-        return anime.random(fontSize() * 3, fontSize() * 5);
-      },
-      lineWidth: 0,
-      alpha: {
-        value: 0,
-        easing: 'linear',
-        duration: () => {
-          return anime.random(300, 500);
-        }
-      },
-      duration: () => {
-        return anime.random(1000, 1300);
-      },
-      easing: 'easeOutExpo',
-      complete: removeAction
-    });
-
-    //Animate ripple 2
-    let ripple2Animation = anime({
-      targets: ripple2,
-      radius: () => {
-        return anime.random(fontSize() * 5, fontSize() * 7);
-      },
-      lineWidth: 0,
-      alpha: {
-        value: 0,
-        easing: 'linear',
-        duration: () => {
-          return anime.random(300, 500);
-        }
-      },
-      duration: () => {
-        return anime.random(1000, 1300);
-      },
-      easing: 'easeOutExpo',
-      complete: removeAction
-    });
-
-    //Animate ripple 3
-    let ripple3Animation = anime({
-      targets: ripple3,
-      radius: () => {
-        return anime.random(fontSize() * 7, fontSize() * 9);
-      },
-      lineWidth: 0,
-      alpha: {
-        value: 0,
-        easing: 'linear',
-        duration: () => {
-          return anime.random(300, 500);
-        }
-      },
-      duration: () => {
-        return anime.random(1000, 1300);
-      },
-      easing: 'easeOutExpo',
-      complete: removeAction
-    });
+    //Animate ripples
+    let ripple1Animation = animateRipple(ripple1, 5);
+    let ripple2Animation = animateRipple(ripple2, 7);
+    let ripple3Animation = animateRipple(ripple3, 9);
 
     actions.push(circleAnimation);
     actions.push(ripple1Animation);
@@ -218,6 +187,30 @@ const Animations = (ctx, canvas) => {
     y = Math.random() * (canvas.height);
   };
 
+  const removeContainer = () => {
+    $('#title').removeClass('pulse');
+    $('#description').removeClass('pulse');
+  };
+
+  const pulseContainer = () => {
+    $('#title').addClass('pulse');
+    $('#description').addClass('pulse');
+    setTimeout(
+      removeContainer
+      , 300);
+  };
+
+  const removeLogo = () => {
+    $('#logo').removeClass('pulse');
+  };
+
+  const pulseLogo = () => {
+    $('#logo').addClass('pulse');
+    setTimeout(
+      removeLogo
+      , 300);
+  };
+
   document.addEventListener('keydown', (e) => {
     e.preventDefault();
 
@@ -225,6 +218,17 @@ const Animations = (ctx, canvas) => {
     if (e.keyCode === 32) {
       changeColorSet();
       changeSoundSet();
+
+      let el = $('#logo');
+      let offset = el.offset();
+      animateCircles(offset.left + 25, offset.top + 25);
+      pulseLogo();
+
+      sound = new Howl({
+        src: soundSets[0][e.keyCode]
+      });
+      sound.play();
+
     }
 
     //Number and letter key to play sound
@@ -232,7 +236,9 @@ const Animations = (ctx, canvas) => {
       updateCoords();
       animateCircles(x, y);
 
-      var sound = new Howl({
+      pulseContainer();
+
+      sound = new Howl({
         src: soundSets[0][e.keyCode]
       });
       sound.play();
