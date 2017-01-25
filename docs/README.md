@@ -9,12 +9,11 @@ With DropIt, users will be allowed to
 
 This project will also include:
 - [ ] An about modal with instructions and screenshots of play
-- [ ] An option to play a song in the background
 - [ ] Animation effects each time a key is pressed
 - [ ] A production README
 
 ## Wireframe
-This app consists of a single screen with instructions, control for a background song, and animations. Links to my github and linkedin will also be available on the bottom of the page. Game controls will include starting/stopping the background song.
+This app consists of a single screen with animations and a modal for instructions. Links to my github and linkedin will also be available on the bottom of the page. Game controls will include switching sound/color sets.
 
 ![dropit](./wireframe/dropit.png)
 
@@ -22,11 +21,13 @@ This app consists of a single screen with instructions, control for a background
 
 ## Architecture and Technologies
 This project will be implemented with the following technologies:
-* Vanilla Javascript will handle the overall sound logic.
-* React will setup the modal and control for the user.
-* HTML5 Canvas and Easel.js will be used for DOM manipulation and rendering.
-* Howler.js for Audio library.
-* Webpack will bundle the scripts
+* Vanilla Javascript will handle the overall logic in creating the webpage.
+* React will setup the modal for the user.
+* HTML5 and Canvas will be used for DOM manipulation and rendering.
+* Howler.js will play audio sounds in the library.
+* AnimeJS will animate the canvas drawings.
+* Animate.css will animate the text and logo.
+* Webpack will bundle the scripts.
 * Babel will transpile ES6 to ES5.
 
 ## Implementation Timeline

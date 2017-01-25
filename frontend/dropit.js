@@ -1,4 +1,5 @@
 import Animations from './animations';
+import Start from './start';
 
 document.addEventListener("DOMContentLoaded", () => {
   const canvas = document.getElementById('canvas');
@@ -6,6 +7,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ctx.canvas.width = window.innerWidth;
   ctx.canvas.height = window.innerHeight;
 
+  Start(ctx, canvas);
   Animations(ctx, canvas);
 
 });

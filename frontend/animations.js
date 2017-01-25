@@ -247,11 +247,7 @@ const Animations = (ctx, canvas) => {
   });
 
   window.addEventListener('resize', resizeCanvas);
-
-  return {
-    boom: animate
-  };
-
+  
 };
 
 export default Animations;
