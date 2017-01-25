@@ -1,5 +1,6 @@
 import anime from 'animejs';
-import Howler from './howler';
+import { Sounds } from './sounds';
+import Howler from './howler.min.js';
 
 const Animations = (ctx, canvas) => {
 
@@ -11,8 +12,8 @@ const Animations = (ctx, canvas) => {
   let colorSets = [
     ["#f8ffe5", "#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"],
     ["#5b507a", "#5B618A", "#9EADC8", "#B9E28C", "#D6D84F"],
-    ["#f6e8ea", "#ef626c", "#de1a1a", "#acbed8", "#84dccf"],
-    ["#c03221", "#f7f7ff", "#f2d0a4", "#545e75", "#3f826d"]
+    ["#5bc0eb", "#f9c80e", "#41ead4", "#fdfffc", "#b91372"],
+    ["#f6e8ea", "#ef626c", "#de1a1a", "#acbed8", "#84dccf"]
   ];
 
   let fontSize = () => {
@@ -211,9 +212,14 @@ const Animations = (ctx, canvas) => {
     }
 
     //Number and letter key to play sound
-    if (e.keyCode >= 48 && e.keyCode <= 90) {
+    if (e.keyCode >= 65 && e.keyCode <= 90) {
       updateCoords();
       animateCircles(x, y);
+
+      var sound = new Howl({
+        src: Sounds[e.keyCode]
+      });
+      sound.play();
     }
 
   });
