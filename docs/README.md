@@ -1,4 +1,4 @@
-# 1010
+# DropIt
 
 ## Background
 DropIt is an interactive soundboard filled with awesome sample sounds for users to create beats.
@@ -22,7 +22,6 @@ This app consists of a single screen with animations and a modal for instruction
 ## Architecture and Technologies
 This project will be implemented with the following technologies:
 * Vanilla Javascript will handle the overall logic in creating the webpage.
-* React will setup the modal for the user.
 * HTML5 and Canvas will be used for DOM manipulation and rendering.
 * Howler.js will play audio sounds in the library.
 * AnimeJS will animate the canvas drawings.
