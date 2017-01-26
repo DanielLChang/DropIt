@@ -1830,9 +1830,9 @@
 	    $('#myModal').addClass('fadeIn');
 	  };
 	
-	  setTimeout(pulseContainer, 500);
-	  setTimeout(pulseLogo, 800);
-	  setTimeout(showModal, 1000);
+	  setTimeout(pulseContainer, 800);
+	  setTimeout(pulseLogo, 1000);
+	  setTimeout(showModal, 1300);
 	};
 	
 	exports.default = Start;
