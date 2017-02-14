@@ -66,6 +66,18 @@ const Start = (ctx, canvas) => {
     return circle;
   };
 
+  const drawSquare = (x, y) => {
+    let colorSet = ["#f8ffe5", "#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"];
+    let square = {};
+    square.draw = function() {
+      ctx.beginPath();
+      ctx.lineWidth="4";
+      ctx.strokeStyle="green";
+      ctx.rect(30,30,50,50);
+      ctx.stroke();
+    };
+  };
+
   const drawCircles = (x, y) => {
     let circles = [];
     for (let i = 0; i < numOfCircles; i++) {
