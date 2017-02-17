@@ -1007,7 +1007,7 @@
 	  value: true
 	});
 	var soundSet1 = exports.soundSet1 = {
-	  32: ['https://res.cloudinary.com/dxfu1kzhk/video/upload/v1485317545/clap_ussscf.wav'],
+	  32: ['./sounds/A/bubbles.mp3'],
 	  65: ['https://res.cloudinary.com/dxfu1kzhk/video/upload/v1485304441/1_xctwu8.mp3'],
 	  66: ['https://res.cloudinary.com/dxfu1kzhk/video/upload/v1485304445/2_ew0ciq.mp3'],
 	  67: ['https://res.cloudinary.com/dxfu1kzhk/video/upload/v1485304447/3_fvupmh.mp3'],
@@ -1702,6 +1702,18 @@
 	    };
 	
 	    return circle;
+	  };
+	
+	  var drawSquare = function drawSquare(x, y) {
+	    var colorSet = ["#f8ffe5", "#06D6A0", "#1B9AAA", "#EF476F", "#FFC43D"];
+	    var square = {};
+	    square.draw = function () {
+	      ctx.beginPath();
+	      ctx.lineWidth = "4";
+	      ctx.strokeStyle = "green";
+	      ctx.rect(30, 30, 50, 50);
+	      ctx.stroke();
+	    };
 	  };
 	
 	  var drawCircles = function drawCircles(x, y) {
